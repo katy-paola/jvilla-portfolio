@@ -3,7 +3,6 @@
 @theme {
 	--font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
 	--font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
-	--font-hand: "Caveat", ui-serif, cursive;
 
 	--color-accent: #ff6f61;
 	--color-accent-strong: #ff8a7d;
@@ -37,6 +36,10 @@
 		outline: 2px solid var(--color-accent);
 		outline-offset: 3px;
 		border-radius: 2px;
+	}
+
+	button:not(:disabled) {
+		cursor: pointer;
 	}
 
 	h1,

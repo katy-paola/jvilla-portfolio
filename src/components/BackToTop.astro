@@ -1,0 +1,43 @@
+---
+---
+
+<button
+	type="button"
+	id="back-to-top"
+	aria-label="Volver arriba"
+	class="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full border border-zinc-700 bg-ink/85 text-zinc-200 opacity-0 invisible translate-y-2 pointer-events-none transition-[opacity,transform,visibility] duration-300 backdrop-blur-md hover:border-accent hover:text-accent"
+>
+	<svg
+		class="h-5 w-5"
+		viewBox="0 0 24 24"
+		fill="none"
+		stroke="currentColor"
+		stroke-width="2"
+		stroke-linecap="round"
+		stroke-linejoin="round"
+		aria-hidden="true"
+	>
+		<path d="M12 19V5"></path>
+		<path d="m5 12 7-7 7 7"></path>
+	</svg>
+</button>
+
+<script>
+	const button = document.getElementById('back-to-top');
+	if (button) {
+		const update = () => {
+			const visible = window.scrollY > 480;
+			button.classList.toggle('opacity-0', !visible);
+			button.classList.toggle('invisible', !visible);
+			button.classList.toggle('translate-y-2', !visible);
+			button.classList.toggle('pointer-events-none', !visible);
+		};
+		update();
+		window.addEventListener('scroll', update, { passive: true });
+
+		button.addEventListener('click', () => {
+			const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+		});
+	}
+</script>

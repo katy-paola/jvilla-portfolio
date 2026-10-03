@@ -33,7 +33,7 @@ const steps = [
 		{
 			steps.map((step, index) => (
 				<li
-					class="relative rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 transition-colors duration-300 hover:border-accent/50 md:p-7"
+					class="relative rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 md:p-7"
 					data-reveal
 				>
 					<span class="font-display text-sm font-bold text-accent">0{index + 1}</span>
@@ -44,27 +44,14 @@ const steps = [
 		}
 	</ol>
 
-	<div class="mt-10 grid gap-6 lg:grid-cols-5" data-reveal>
-		<div class="rounded-2xl bg-accent/10 p-6 ring-1 ring-accent/30 md:p-8 lg:col-span-3">
-			<p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
-				Entrenamiento personalizado
-			</p>
-			<p class="mt-3 text-base leading-relaxed text-zinc-300 md:text-lg">
-				Aquí el acompañamiento es continuo: supervisión durante toda la sesión, ajustes sobre la
-				marcha y alguien que se asegura de que des lo que puedes. Esa continuidad forma parte del
-				servicio.
-			</p>
-		</div>
-
-		<div class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 md:p-8 lg:col-span-2">
-			<p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
-				El resto del tiempo
-			</p>
-			<p class="mt-3 text-base leading-relaxed text-zinc-400">
-				Soy exigente, pero no distante: apoyo moral cuando el set no va bien y apoyo físico
-				cuando hace falta una mano. En serio: de los errores se aprende, de las repeticiones mal
-				hechas, lesión.
-			</p>
-		</div>
+	<div class="mt-10 rounded-2xl bg-accent/10 p-6 ring-1 ring-accent/30 md:p-8" data-reveal>
+		<p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+			Entrenamiento personalizado
+		</p>
+		<p class="mt-3 max-w-3xl text-base leading-relaxed text-zinc-300 md:text-lg">
+			Aquí el acompañamiento es continuo: supervisión durante toda la sesión, ajustes sobre la
+			marcha, motivación cuando la necesitas y apoyo físico cuando el ejercicio lo pide. Esa
+			continuidad forma parte del servicio.
+		</p>
 	</div>
 </Section>

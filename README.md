@@ -18,7 +18,7 @@ Sitio web de una sola página (scroll) para un entrenador deportivo. Perfil prof
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   └── jvilla-logo.svg        # logo (también favicon), usado por components/Logo.astro
 ├── src/
 │   ├── styles/global.css      # tokens: color de acento, tipografías, base
 │   ├── layouts/Layout.astro   # <head>, SEO, fuentes, script de revelado
@@ -29,12 +29,10 @@ Sitio web de una sola página (scroll) para un entrenador deportivo. Perfil prof
 
 ## Antes de publicar: rellenar los placeholders
 
-Todas las marcas `[...]` están pendientes de datos reales. **No se ha inventado** ningún dato (nombre, años exactos, certificaciones, testimonios ni resultados).
+Todas las marcas `[...]` están pendientes de datos reales. **No se ha inventado** ningún dato (años exactos, certificaciones, testimonios ni resultados). El nombre ya está rellenado: Jesús Villadiego.
 
 | Qué buscar | Dónde está |
 | :--- | :--- |
-| `[Tu nombre]` | `src/components/Nav.astro`, `Hero.astro`, `Footer.astro`, `src/pages/index.astro` (meta author/title/OG) |
-| Iniciales `TN` (logo) | `Nav.astro` — cámbialas por las iniciales reales |
 | `[Tu foto aquí]` | `Hero.astro` — sustituye el bloque con borde discontinuo por `<img>` (ideal: imagen en `src/assets/` con `astro:assets`) |
 | Rasgos de "Cómo soy" | `SobreMi.astro` — ajustar si el entrenador pide cambiar alguno |
 | `+57 [número]`, `@[usuario]` | `Contacto.astro` — valor visible y `href` del enlace |
@@ -43,7 +41,7 @@ Todas las marcas `[...]` están pendientes de datos reales. **No se ha inventado
 ## Diseño
 
 - **Fondo oscuro** (`neutral/zinc-950`) + **acento coral** `#ff6f61` → se cambia en un sitio: `src/styles/global.css` (`--color-accent`).
-- **Tipografías:** Sora (títulos), Inter (texto), Caveat (notas manuscritas con tono cercano) — cargadas desde Google Fonts en `Layout.astro`.
+- **Tipografías:** Sora (títulos) e Inter (texto) — cargadas desde Google Fonts en `Layout.astro`.
 - Las animaciones de aparición respetan `prefers-reduced-motion` y tienen fallback sin JavaScript.
 
 ## Contenido (español)

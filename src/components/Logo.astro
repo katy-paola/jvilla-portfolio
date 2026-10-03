@@ -1,0 +1,17 @@
+---
+interface Props {
+	alt?: string;
+	class?: string;
+}
+
+const { alt = '', class: className } = Astro.props;
+---
+
+<img
+	src="/jvilla-logo.svg"
+	alt={alt}
+	width="80"
+	height="80"
+	class={className}
+	decoding="async"
+/>

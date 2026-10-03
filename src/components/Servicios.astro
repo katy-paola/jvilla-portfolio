@@ -1,0 +1,109 @@
+---
+import Section from './Section.astro';
+import SectionTitle from './SectionTitle.astro';
+
+const services = [
+	{
+		name: 'Orientación en el gimnasio',
+		tag: 'Ayuda cuando la necesitas',
+		text: 'Estoy en el gimnasio y estoy para ti. Si te atascas con un ejercicio o no sabes cómo seguir con tu rutina, pídeme: te explico cómo hacerlo, te lo muestro, corrijo tu técnica y te superviso hasta que salga bien. En el entrenamiento de siempre este apoyo llega cuando lo pides; no hay vigilancia constante.',
+		points: ['Explicación del ejercicio', 'Demostración y corrección', 'Supervisión hasta lograrlo'],
+		featured: false,
+	},
+	{
+		name: 'Entrenamiento personalizado',
+		tag: 'Acompañamiento continuo',
+		text: 'Un plan pensado para ti, con supervisión y acompañamiento durante toda la sesión. Ajustes sobre la marcha, técnica vigilada y motivación presente: aquí estar pendiente de ti es parte del servicio, no un extra.',
+		points: ['Plan adaptado a tu objetivo', 'Supervisión continua en sesión', 'Correcciones y ajustes constantes'],
+		featured: true,
+	},
+];
+---
+
+<Section id="servicios" class="border-t border-zinc-900">
+	<SectionTitle
+		eyebrow="Servicios"
+		title="Dos formas de entrenar conmigo"
+		lead="Desde una mano puntual cuando te trabas hasta un acompañamiento completo sesión a sesión."
+	/>
+
+	<div class="grid gap-6 lg:grid-cols-2">
+		{
+			services.map((service) => (
+				<article
+					class:list={[
+						'flex flex-col rounded-3xl p-7 md:p-9',
+						service.featured
+							? 'bg-accent text-zinc-900 shadow-xl shadow-accent/10'
+							: 'border border-zinc-800 bg-zinc-900/60',
+					]}
+					data-reveal
+				>
+					<p
+						class:list={[
+							'text-[11px] font-semibold uppercase tracking-[0.16em]',
+							service.featured ? 'text-zinc-900/70' : 'text-accent',
+						]}
+					>
+						{service.tag}
+					</p>
+
+					<h3
+						class:list={[
+							'mt-3 font-display text-2xl font-bold md:text-3xl',
+							service.featured ? 'text-ink' : '',
+						]}
+					>
+						{service.name}
+					</h3>
+
+					<p
+						class:list={[
+							'mt-4 flex-1 text-sm leading-relaxed md:text-base',
+							service.featured ? 'text-zinc-900/80' : 'text-zinc-400',
+						]}
+					>
+						{service.text}
+					</p>
+
+					<ul class="mt-6 space-y-2.5">
+						{service.points.map((point) => (
+							<li class="flex items-start gap-2.5 text-sm font-medium">
+								<svg
+									class:list={[
+										'mt-0.5 h-4 w-4 shrink-0',
+										service.featured ? 'text-zinc-900' : 'text-accent',
+									]}
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="m5 13 4 4L19 7" />
+								</svg>
+								<span class={service.featured ? 'text-zinc-900' : 'text-zinc-300'}>
+									{point}
+								</span>
+							</li>
+						))}
+					</ul>
+
+					<a
+						href="#contacto"
+						class:list={[
+							'mt-8 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5',
+							service.featured
+								? 'bg-zinc-900 text-accent hover:bg-zinc-800'
+								: 'border border-zinc-700 text-zinc-200 hover:border-accent hover:text-accent',
+						]}
+					>
+						Quiero saber más
+					</a>
+				</article>
+			))
+		}
+	</div>
+</Section>

@@ -1,0 +1,55 @@
+---
+import Section from './Section.astro';
+import SectionTitle from './SectionTitle.astro';
+
+const expectations = [
+	{
+		title: 'Exigencia real',
+		text: 'Voy a pedirte que des lo mejor de ti, también en los días flojos.',
+	},
+	{
+		title: 'Técnica primero',
+		text: 'Cada movimiento con su porqué, su corrección y su supervisión.',
+	},
+	{
+		title: 'Trato cercano',
+		text: 'Hablaremos de todo: tu rutina, tu progreso y lo que te apetezca en la pausa.',
+	},
+	{
+		title: 'Apoyo cuando toca',
+		text: 'Apoyo moral siempre que haga falta y apoyo físico si el ejercicio lo pide.',
+	},
+	{
+		title: 'Acompañamiento según el servicio',
+		text: 'Puntual en el gimnasio cuando lo necesitas; continuo en el entrenamiento personalizado.',
+	},
+	{
+		title: 'Resultados sin humo',
+		text: 'Objetivos de verdad y trabajo constante, sin promesas imposibles.',
+	},
+];
+---
+
+<Section id="que-esperar" class="border-t border-zinc-900">
+	<SectionTitle
+		eyebrow="Qué puedes esperar"
+		title="Si entrenamos juntos…"
+		lead="Esto es lo que implica ponerse en mis manos. Ni más ni menos."
+	/>
+
+	<ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+		{
+			expectations.map((item) => (
+				<li
+					class="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 transition-colors duration-300 hover:border-accent/40"
+					data-reveal
+				>
+					<h3 class="font-display text-base font-bold text-zinc-50 md:text-lg">
+						{item.title}
+					</h3>
+					<p class="mt-2 text-sm leading-relaxed text-zinc-400">{item.text}</p>
+				</li>
+			))
+		}
+	</ul>
+</Section>

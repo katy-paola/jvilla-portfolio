@@ -1,0 +1,53 @@
+---
+import Section from './Section.astro';
+import SectionTitle from './SectionTitle.astro';
+
+const traits = [
+	'Amable',
+	'Extrovertido',
+	'Conversador',
+	'Bromista',
+	'Paciente',
+	'Motivador',
+	'Exigente',
+	'Cercano',
+];
+---
+
+<Section id="sobre-mi" class="border-t border-zinc-900">
+	<SectionTitle
+		eyebrow="Sobre mí"
+		title="Un entrenador de los de hablar contigo"
+		lead="Entrenador deportivo formado en el SENA. Trabajo en un gimnasio desde hace varios años, con personas de todo nivel y de cualquier objetivo."
+	/>
+
+	<p class="-mt-6 max-w-3xl text-base leading-relaxed text-zinc-400 md:-mt-8 md:text-lg" data-reveal>
+		En el gimnasio estoy para lo que haga falta: resolver dudas, corregir técnica o sacarte una
+		sonrisa entre series. Cuando toca entrenar, toca entrenar.
+	</p>
+
+	<blockquote
+		class="mt-8 max-w-3xl border-l-2 border-accent pl-5 font-display text-lg font-semibold leading-snug text-zinc-100 md:text-xl"
+		data-reveal
+	>
+		“No creo en los atajos. Creo en hacerlo bien, muchas veces.”
+	</blockquote>
+
+	<div class="mt-14" data-reveal>
+		<p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Cómo soy</p>
+
+		<ul class="mt-5 flex flex-wrap gap-2.5">
+			{
+				traits.map((trait) => (
+					<li class="rounded-full border border-zinc-700/70 bg-zinc-900 px-4 py-2 text-sm font-medium text-zinc-200 transition-colors duration-200 hover:border-accent hover:text-accent">
+						{trait}
+					</li>
+				))
+			}
+		</ul>
+
+		<p class="mt-6 max-w-2xl text-sm leading-relaxed text-zinc-400 md:text-base">
+			Exigente con la técnica, paciente con el aprendizaje — y con alguna broma por medio.
+		</p>
+	</div>
+</Section>

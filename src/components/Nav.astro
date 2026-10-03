@@ -1,0 +1,162 @@
+---
+const links = [
+	{ href: '#sobre-mi', label: 'Sobre mí' },
+	{ href: '#metodo', label: 'Cómo trabajo' },
+	{ href: '#servicios', label: 'Servicios' },
+	{ href: '#contacto', label: 'Contacto' },
+];
+---
+
+<header
+	id="site-header"
+	class="fixed inset-x-0 top-0 z-50 transition-colors duration-300"
+	data-scrolled="false"
+>
+	<div class="border-b border-transparent transition-colors duration-300" data-header-surface>
+		<nav
+			class="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-6 md:h-20"
+			aria-label="Navegación principal"
+		>
+			<a href="#inicio" class="group flex items-center gap-2.5">
+				<span
+					class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent font-display text-sm font-extrabold text-ink transition-transform duration-300 group-hover:-rotate-6"
+					aria-hidden="true">TN</span
+				>
+				<span class="font-display text-sm font-semibold text-zinc-100">[Tu nombre]</span>
+			</a>
+
+			<ul class="hidden items-center gap-1 md:flex">
+				{
+					links.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								data-nav-link
+								class="rounded-full px-4 py-2 text-sm font-medium text-zinc-400 transition-colors duration-200 hover:text-zinc-100"
+							>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+
+			<div class="flex items-center gap-3">
+				<a
+					href="#contacto"
+					class="hidden rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition-colors duration-200 hover:bg-accent-strong md:inline-flex"
+				>
+					Entrenemos
+				</a>
+
+				<button
+					type="button"
+					id="menu-toggle"
+					class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-zinc-700 text-zinc-200 transition-colors hover:border-accent hover:text-accent md:hidden"
+					aria-expanded="false"
+					aria-controls="mobile-menu"
+					aria-label="Abrir menú"
+				>
+					<svg
+						class="h-5 w-5"
+						viewBox="0 0 24 24"
+						fill="none"
+						stroke="currentColor"
+						stroke-width="2"
+						stroke-linecap="round"
+						aria-hidden="true"
+					>
+						<path d="M4 7h16M4 12h16M4 17h16"></path>
+					</svg>
+				</button>
+			</div>
+		</nav>
+
+		<div id="mobile-menu" class="hidden border-t border-zinc-800 bg-ink/95 backdrop-blur md:hidden">
+			<ul class="mx-auto flex w-full max-w-6xl flex-col px-6 py-4">
+				{
+					links.map((link) => (
+						<li>
+							<a
+								href={link.href}
+								data-nav-link
+								class="block border-b border-zinc-800/70 py-3.5 text-base font-medium text-zinc-300 transition-colors hover:text-accent"
+							>
+								{link.label}
+							</a>
+						</li>
+					))
+				}
+				<li class="pt-4">
+					<a
+						href="#contacto"
+						class="block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-ink"
+					>
+						Entrenemos
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</header>
+
+<script>
+	const header = document.getElementById('site-header');
+	const surface = header?.querySelector<HTMLElement>('[data-header-surface]');
+	const toggle = document.getElementById('menu-toggle');
+	const menu = document.getElementById('mobile-menu');
+	const navLinks = document.querySelectorAll<HTMLAnchorElement>('[data-nav-link]');
+
+	// Fondo del header al hacer scroll
+	const updateHeader = () => {
+		if (!header || !surface) return;
+		header.dataset.scrolled = String(window.scrollY > 12);
+		const scrolled = window.scrollY > 12;
+		surface.classList.toggle('border-zinc-800/80', scrolled);
+		surface.classList.toggle('bg-ink/85', scrolled);
+		surface.classList.toggle('backdrop-blur-md', scrolled);
+	};
+	updateHeader();
+	window.addEventListener('scroll', updateHeader, { passive: true });
+
+	// Menú móvil
+	const closeMenu = () => {
+		if (!menu || !toggle) return;
+		menu.classList.add('hidden');
+		toggle.setAttribute('aria-expanded', 'false');
+		toggle.setAttribute('aria-label', 'Abrir menú');
+	};
+
+	toggle?.addEventListener('click', () => {
+		if (!menu) return;
+		const isOpen = !menu.classList.contains('hidden');
+		menu.classList.toggle('hidden', isOpen);
+		toggle.setAttribute('aria-expanded', String(!isOpen));
+		toggle.setAttribute('aria-label', isOpen ? 'Abrir menú' : 'Cerrar menú');
+	});
+
+	navLinks.forEach((link) => link.addEventListener('click', closeMenu));
+
+	// Sección activa en la navegación (scroll-spy)
+	const sections = Array.from(navLinks)
+		.map((link) => document.querySelector(link.getAttribute('href') ?? ''))
+		.filter((section): section is HTMLElement => section !== null);
+
+	if ('IntersectionObserver' in window && sections.length > 0) {
+		const spy = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (!entry.isIntersecting) continue;
+					const id = `#${entry.target.id}`;
+					navLinks.forEach((link) => {
+						const active = link.getAttribute('href') === id;
+						link.classList.toggle('text-accent', active);
+						link.classList.toggle('font-semibold', active);
+					});
+				}
+			},
+			{ rootMargin: '-45% 0px -50% 0px' },
+		);
+		sections.forEach((section) => spy.observe(section));
+	}
+</script>

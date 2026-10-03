@@ -1,0 +1,66 @@
+---
+import Section from './Section.astro';
+import SectionTitle from './SectionTitle.astro';
+
+const channels = [
+	{
+		label: 'WhatsApp',
+		value: '+57 [número]',
+		href: 'https://wa.me/',
+		icon: 'chat',
+	},
+	{
+		label: 'Instagram',
+		value: '@[usuario]',
+		href: 'https://instagram.com/',
+		icon: 'at',
+	},
+];
+---
+
+<Section id="contacto" class="border-t border-zinc-900 bg-zinc-900/30">
+	<div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+		<div class="lg:col-span-5">
+			<SectionTitle
+				eyebrow="Contacto"
+				title="Cuéntame qué buscas"
+				lead="Escríbeme y te digo cómo empezamos. Sin compromisos y sin discursos motivacionales de redes sociales."
+			/>
+		</div>
+
+		<ul class="grid content-center gap-4 lg:col-span-7">
+			{
+				channels.map((channel) => (
+					<li data-reveal>
+						<a
+							href={channel.href}
+							class="group flex items-center gap-5 rounded-2xl border border-dashed border-zinc-700 bg-zinc-950/60 p-6 transition-colors duration-300 hover:border-accent"
+						>
+							<span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent transition-colors duration-300 group-hover:bg-accent group-hover:text-ink">
+							{channel.icon === 'chat' && (
+									<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.6L3 21l1.9-5.6A8.5 8.5 0 1 1 21 11.5Z" />
+									</svg>
+								)}
+								{channel.icon === 'at' && (
+									<svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+										<circle cx="12" cy="12" r="4" />
+										<path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8" />
+									</svg>
+								)}
+							</span>
+							<span class="min-w-0">
+								<span class="block text-[11px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+									{channel.label}
+								</span>
+								<span class="mt-1 block truncate font-display text-lg font-semibold text-zinc-100 transition-colors duration-300 group-hover:text-accent">
+									{channel.value}
+								</span>
+							</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</Section>

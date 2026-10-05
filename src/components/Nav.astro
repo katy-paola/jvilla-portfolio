@@ -140,8 +140,8 @@ const { links = defaultLinks } = Astro.props;
 					const id = `#${entry.target.id}`;
 					navLinks.forEach((link) => {
 						const active = link.getAttribute('href') === id;
-						link.classList.toggle('text-accent', active);
-						link.classList.toggle('font-semibold', active);
+						if (active) link.setAttribute('aria-current', 'location');
+						else link.removeAttribute('aria-current');
 					});
 				}
 			},

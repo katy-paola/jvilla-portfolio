@@ -51,6 +51,12 @@
 	}
 }
 
+/* Estado activo de la navegación (scroll-spy); fuera de @layer para ganarle a las utilidades */
+[data-nav-link][aria-current] {
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
 /* Aparición suave al hacer scroll (se desactiva si el usuario pide menos movimiento) */
 @media (prefers-reduced-motion: no-preference) {
 	[data-reveal] {

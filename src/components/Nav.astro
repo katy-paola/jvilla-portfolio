@@ -133,17 +133,19 @@ const { links = defaultLinks } = Astro.props;
 		.filter((section): section is HTMLElement => section !== null);
 
 	if ('IntersectionObserver' in window && sections.length > 0) {
+		const visible = new Set<string>();
 		const spy = new IntersectionObserver(
 			(entries) => {
 				for (const entry of entries) {
-					if (!entry.isIntersecting) continue;
-					const id = `#${entry.target.id}`;
-					navLinks.forEach((link) => {
-						const active = link.getAttribute('href') === id;
-						if (active) link.setAttribute('aria-current', 'location');
-						else link.removeAttribute('aria-current');
-					});
+					if (entry.isIntersecting) visible.add(entry.target.id);
+					else visible.delete(entry.target.id);
 				}
+				const activeId = visible.size ? `#${[...visible][0]}` : null;
+				navLinks.forEach((link) => {
+					if (activeId && link.getAttribute('href') === activeId)
+						link.setAttribute('aria-current', 'location');
+					else link.removeAttribute('aria-current');
+				});
 			},
 			{ rootMargin: '-45% 0px -50% 0px' },
 		);

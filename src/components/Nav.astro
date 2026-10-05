@@ -1,12 +1,18 @@
 ---
 import Logo from './Logo.astro';
 
-const links = [
+interface Props {
+	links?: { href: string; label: string }[];
+}
+
+const defaultLinks = [
 	{ href: '#sobre-mi', label: 'Sobre mí' },
 	{ href: '#metodo', label: 'Cómo trabajo' },
 	{ href: '#servicios', label: 'Servicios' },
 	{ href: '#contacto', label: 'Contacto' },
 ];
+
+const { links = defaultLinks } = Astro.props;
 ---
 
 <header

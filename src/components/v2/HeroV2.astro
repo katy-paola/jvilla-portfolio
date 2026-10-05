@@ -1,0 +1,111 @@
+---
+const facts = [
+	{ label: 'Formación', value: 'Entrenamiento Deportivo · SENA' },
+	{ label: 'Trabajo actual', value: 'Gimnasio' },
+	{ label: 'Experiencia', value: 'Varios años en el sector' },
+	{ label: 'Enfoque', value: 'General · todos los niveles' },
+];
+---
+
+<section
+	id="inicio"
+	class="relative flex min-h-svh flex-col justify-center overflow-hidden pb-12 pt-24 md:pb-16 md:pt-28"
+>
+	<!-- Fondo decorativo -->
+	<div
+		class="pointer-events-none absolute -top-40 right-[-20%] h-[36rem] w-[36rem] rounded-full bg-accent/10 blur-[120px]"
+		aria-hidden="true"
+	>
+	</div>
+	<div
+		class="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(244,244,245,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(244,244,245,0.04)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,black,transparent)]"
+		aria-hidden="true"
+	>
+	</div>
+
+	<div class="relative mx-auto w-full max-w-6xl px-6">
+		<div class="grid items-center gap-6 lg:grid-cols-12 lg:gap-14">
+			<div class="lg:col-span-7">
+				<h1
+					class="font-display text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl md:text-6xl"
+					data-reveal
+				>
+					<span class="text-accent">Jesús Villadiego</span>
+				</h1>
+
+				<p
+					class="mt-4 inline-flex items-center gap-2 rounded-full border border-zinc-700/80 bg-zinc-900/70 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-zinc-400"
+					data-reveal
+				>
+					<span class="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+					Entrenador deportivo
+				</p>
+
+				<p class="mt-4 max-w-xl text-lg leading-relaxed text-zinc-400 md:text-xl" data-reveal>
+					Trabajo con exigencia y con método. Tanto para quienes entrenan como para un centro
+					que necesita a alguien en sala, el estándar es el mismo: técnica bien ejecutada y
+					acompañamiento presente.
+				</p>
+
+				<div class="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4" data-reveal>
+					<a
+						href="#contacto"
+						class="rounded-full bg-accent px-7 py-3.5 text-center text-sm font-semibold text-ink shadow-lg shadow-accent/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-accent-strong"
+					>
+					Contacto
+				</a>
+					<a
+						href="#metodo"
+						class="rounded-full border border-zinc-700 px-7 py-3.5 text-center text-sm font-semibold text-zinc-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+					>
+						Así trabajo
+					</a>
+				</div>
+			</div>
+
+			<div class="lg:col-span-5" data-reveal>
+				<div class="relative">
+					<!-- Sustituir por la foto real del entrenador -->
+					<div
+						class="flex h-[26svh] w-full items-center justify-center rounded-3xl border-2 border-dashed border-zinc-700 bg-zinc-900/60 text-center lg:h-[46svh]"
+					>
+						<div class="px-6">
+							<svg
+								class="mx-auto mb-3 h-10 w-10 text-zinc-600"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="1.5"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								aria-hidden="true"
+							>
+								<rect x="3" y="5" width="18" height="14" rx="2"></rect>
+								<circle cx="8.5" cy="10" r="1.5"></circle>
+								<path d="m21 16-5-5-6 6-2-2-5 5"></path>
+							</svg>
+							<p class="text-sm font-medium text-zinc-400">[Foto pendiente]</p>
+							<p class="mt-1 text-xs text-zinc-500">Bloque de imagen por sustituir</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<dl
+			class="mt-6 flex flex-wrap items-baseline gap-x-8 gap-y-2 md:mt-12"
+			data-reveal
+		>
+			{
+				facts.map((fact) => (
+					<div class="flex items-baseline gap-2">
+						<dt class="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-500">
+							{fact.label}
+						</dt>
+						<dd class="text-sm text-zinc-300">{fact.value}</dd>
+					</div>
+				))
+			}
+		</dl>
+	</div>
+</section>

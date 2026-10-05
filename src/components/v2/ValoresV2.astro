@@ -1,0 +1,30 @@
+---
+import Section from '../Section.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+const values = [
+	{ term: 'Disciplina', line: 'La constancia gana al ánimo de cada día.' },
+	{ term: 'Motivación', line: 'La motivación se trabaja, no se espera.' },
+	{ term: 'Resultados', line: 'Se ganan con trabajo; no se prometen.' },
+	{ term: 'Carisma', line: 'Entrenar también puede ser divertido.' },
+	{ term: 'Cercanía', line: 'Trato individual: cada persona se conoce por su nombre y por su progreso.' },
+];
+---
+
+<Section id="valores" class="border-t border-zinc-900">
+	<SectionTitle eyebrow="Conceptos que me representan" title="Lo que no se negocia" />
+
+	<dl
+		class="grid gap-x-8 gap-y-8 border-t border-zinc-800 pt-8 sm:grid-cols-2 lg:grid-cols-5"
+		data-reveal
+	>
+		{
+			values.map((value) => (
+				<div>
+					<dt class="font-display text-lg font-bold text-accent md:text-xl">{value.term}</dt>
+					<dd class="mt-2 text-sm leading-relaxed text-zinc-400">{value.line}</dd>
+				</div>
+			))
+		}
+	</dl>
+</Section>

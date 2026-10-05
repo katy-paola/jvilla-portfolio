@@ -1,0 +1,65 @@
+---
+import Section from '../Section.astro';
+import SectionTitle from '../SectionTitle.astro';
+
+const paths = [
+	{
+		label: 'Para alumnos',
+		items: [
+			'Orientación en sala ante cualquier duda o dificultad con un ejercicio.',
+			'Rutina y progreso adaptados al nivel y al objetivo de cada persona.',
+			'Seguimiento individual: se conoce a cada persona, se exige y se mantiene un trato cercano.',
+		],
+	},
+	{
+		label: 'Para centros deportivos',
+		items: [
+			'Formación en Entrenamiento Deportivo (SENA) y años de experiencia en piso.',
+			'Corrección de técnica y atención cercana a cada persona que entre a entrenar.',
+			'Método claro y respeto por la forma de trabajo del equipo.',
+		],
+	},
+];
+---
+
+<Section id="colaboracion" class="border-t border-zinc-900">
+	<SectionTitle
+		eyebrow="Formas de colaborar"
+		title="Un mismo trato, dos formas de colaborar"
+		lead="La técnica y la exigencia no cambian según quién esté al otro lado; lo que cambia es el alcance de la colaboración."
+	/>
+
+	<div class="grid gap-5 sm:grid-cols-2">
+		{
+			paths.map((path) => (
+				<div
+					class="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 md:p-8"
+					data-reveal
+				>
+					<p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">
+						{path.label}
+					</p>
+					<ul class="mt-5 space-y-4">
+						{path.items.map((item) => (
+							<li class="flex items-start gap-3">
+								<svg
+									class="mt-0.5 h-4 w-4 shrink-0 text-accent"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.2"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									aria-hidden="true"
+								>
+									<path d="M20 6 9 17l-5-5" />
+								</svg>
+								<span class="text-sm leading-relaxed text-zinc-300">{item}</span>
+							</li>
+						))}
+					</ul>
+				</div>
+			))
+		}
+	</div>
+</Section>

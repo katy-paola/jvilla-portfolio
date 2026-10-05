@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import HeroV2 from '../components/v2/HeroV2.astro';
+import ValoresV2 from '../components/v2/ValoresV2.astro';
+import SobreMiV2 from '../components/v2/SobreMiV2.astro';
+import MetodoV2 from '../components/v2/MetodoV2.astro';
+import PuenteV2 from '../components/v2/PuenteV2.astro';
+import ExpectativasV2 from '../components/v2/ExpectativasV2.astro';
+import ContactoV2 from '../components/v2/ContactoV2.astro';
+import Footer from '../components/Footer.astro';
+import BackToTop from '../components/BackToTop.astro';
+
+const title = 'Jesús Villadiego · Entrenador deportivo';
+const description =
+	'Entrenador deportivo formado en el SENA: orientación y entrenamiento para quien quiere mejorar, y un profesional con método para gimnasios y centros deportivos.';
+
+const navLinks = [
+	{ href: '#sobre-mi', label: 'Sobre mí' },
+	{ href: '#metodo', label: 'Cómo trabajo' },
+	{ href: '#colaboracion', label: 'Colaboración' },
+	{ href: '#contacto', label: 'Contacto' },
+];
+---
+
+<Layout title={title} description={description} noindex>
+	<Nav links={navLinks} />
+	<main>
+		<HeroV2 />
+		<ValoresV2 />
+		<SobreMiV2 />
+		<MetodoV2 />
+		<PuenteV2 />
+		<ExpectativasV2 />
+		<ContactoV2 />
+	</main>
+	<Footer />
+	<BackToTop />
+</Layout>

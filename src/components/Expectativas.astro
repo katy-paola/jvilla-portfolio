@@ -1,7 +1,4 @@
 ---
-import Section from './Section.astro';
-import SectionTitle from './SectionTitle.astro';
-
 const expectations = [
 	{
 		title: 'Exigencia real',
@@ -30,26 +27,31 @@ const expectations = [
 ];
 ---
 
-<Section id="que-esperar" class="border-t border-zinc-900">
-	<SectionTitle
-		eyebrow="Qué puedes esperar"
-		title="Si entrenamos juntos…"
-		lead="Esto es lo que implica ponerse en mis manos. Ni más ni menos."
-	/>
+<div
+	id="que-esperar"
+	class="mt-14 scroll-mt-20 border-t border-zinc-900 pt-12 md:mt-20 md:pt-16"
+>
+	<p class="text-xs font-semibold uppercase tracking-[0.2em] text-accent">Qué puedes esperar</p>
+	<h3 class="mt-3 font-display text-2xl font-bold leading-tight md:text-3xl">
+		Si entrenamos juntos…
+	</h3>
+	<p class="mt-3 max-w-2xl text-base leading-relaxed text-zinc-400">
+		Esto es lo que implica ponerse en mis manos. Ni más ni menos.
+	</p>
 
-	<ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+	<ul class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
 		{
 			expectations.map((item) => (
 				<li
 					class="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6"
 					data-reveal
 				>
-					<h3 class="font-display text-base font-bold text-zinc-50 md:text-lg">
+					<h4 class="font-display text-base font-bold text-zinc-50 md:text-lg">
 						{item.title}
-					</h3>
+					</h4>
 					<p class="mt-2 text-sm leading-relaxed text-zinc-400">{item.text}</p>
 				</li>
 			))
 		}
 	</ul>
-</Section>
+</div>
